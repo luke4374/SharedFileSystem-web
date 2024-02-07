@@ -10,9 +10,10 @@ enum API {
 // 暴露接口方法
 // 登录接口
 export const reqLogin = (data: loginForm) => {
-  request.post<any, loginRespData>(API.LOGIN_URI, data)
+  return request.post<any, loginRespData>(API.LOGIN_URI, data)
 }
 
 export const reqUserInfo = () => {
-  request.post<any, userInfoRespData>(API.USERINFO_URI)
+  return request.get<any, userInfoRespData>(API.USERINFO_URI)
 }
+

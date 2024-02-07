@@ -18,12 +18,12 @@ request.interceptors.request.use((config) => {
 request.interceptors.response.use(
   (Success_response) => {
     // 成功响应的回调
-    console.log('SUCCESS', Success_response)
+    console.log('SUCCESS', Success_response.data)
     return Success_response.data
   },
   (Fail_response) => {
     // 失败的回调,处理http网络错误
-    console.log(Fail_response)
+    console.log(Fail_response.data)
 
     let message = ''
     const status = Fail_response.response.status

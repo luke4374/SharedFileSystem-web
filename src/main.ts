@@ -9,7 +9,10 @@ import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
 import globalComponents from '@/components'
 // 全局样式
 import '@/styles/index.scss'
+// 引入路由
 import router from './router'
+// 引入pinia全局仓库
+import pinia from "./store";
 
 const app = createApp(App)
 // 注册使用 ElementPlus 插件
@@ -20,6 +23,8 @@ app.use(ElementPlus, {
 app.use(globalComponents)
 // 注册使用路由模板
 app.use(router)
+// 注册pinia
+app.use(pinia)
 // 应用挂载
 app.mount('#app')
 
