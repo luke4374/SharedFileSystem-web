@@ -1,1 +1,16 @@
-@import './reset.scss'
+@import './reset.scss';
+
+// 滚动条全局设置
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $home-menu-left-color;
+}
+
+::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: white;
+  border-radius: 10px;
+}

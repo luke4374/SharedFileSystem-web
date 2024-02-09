@@ -12,7 +12,7 @@ import '@/styles/index.scss'
 // 引入路由
 import router from './router'
 // 引入pinia全局仓库
-import pinia from "./store";
+import pinia from './store'
 
 const app = createApp(App)
 // 注册使用 ElementPlus 插件

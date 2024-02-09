@@ -134,7 +134,7 @@ const rules = reactive<FormRules<loginForm>>({
 
   .login_form {
     h1 {
-      font-family: $chn-font;
+      font-family: $login-chn-font;
       position: relative;
       color: #009490;
       top: 0;
