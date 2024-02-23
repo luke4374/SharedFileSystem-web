@@ -2,4 +2,5 @@
 export default {
   title: '韩亚文件管理系统',
   logo_path: '/hana-icon.ico',
+  logoHidden: true,
 }

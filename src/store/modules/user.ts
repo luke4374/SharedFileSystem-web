@@ -6,6 +6,7 @@ import { reqLogin } from '@/api/user'
 import type { loginForm, loginRespData } from '@/api/user/type'
 import { UserState } from './types/statetypes'
 import { GET_TOKEN, SET_TOKEN } from '@/utils/token'
+import { RouterList } from '@/router/routers'
 
 // 用户数据、逻辑仓库
 const useUserStore = defineStore('User', {
@@ -13,6 +14,7 @@ const useUserStore = defineStore('User', {
   state: (): UserState => {
     return {
       token: GET_TOKEN('TOKEN'), // 用户标识token
+      menuRouters: RouterList, // 仓库存储生成菜单需要的路由数组
     }
   },
   // 处理异步&逻辑方法

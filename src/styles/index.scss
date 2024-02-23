@@ -6,11 +6,12 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: $home-menu-left-color;
+  // background: $home-menu-left-color;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  width: 10px;
-  background-color: white;
+  width: 2px;
+  background-color: rgba($color: #393c3f, $alpha: 0.6);
   border-radius: 10px;
 }

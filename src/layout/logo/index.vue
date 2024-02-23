@@ -1,5 +1,5 @@
 <template>
-  <div class="logo">
+  <div class="logo" v-if="settings.logoHidden">
     <img :src="settings.logo_path" alt="HanaIcon" />
     <p>{{ settings.title }}</p>
   </div>
@@ -13,10 +13,11 @@ import settings from '@/settings';
 <style lang="scss" scoped>
 .logo {
   width: 100%;
-  height: $home-menu-left-logoHeight;
+  height: $home-menu-top-height;
   display: flex;
   align-items: center;
   padding: 12px;
+  background-color: $home-menu-left-color;
 
   img {
     width: 36px;

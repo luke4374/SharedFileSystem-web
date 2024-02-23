@@ -3,88 +3,38 @@
 
     <!-- 左侧菜单 -->
     <div class="layout_slider">
+      <!-- logo标签 -->
+      <Logo></Logo>
+      <!-- 左侧菜单列表 -->
       <el-scrollbar class="scrollbar">
-        <!-- <Logo></Logo> -->
-
-        <el-menu class="el-menu-vertical" :collapse="isCollapse" @open="handleOpen" @close="handleClose" text-color="red">
-          <!-- Logo子标签 -->
-          <el-menu-item index="1">
-            <el-icon>
-              <img :src="settings.logo_path" />
-            </el-icon>
-            <template #title>
-              <div>
-                韩亚文件系统
-              </div>
-            </template>
-          </el-menu-item>
-          <!-- Logo结束 -->
-          <el-sub-menu index="2">
-            <template #title>
-              <el-icon>
-                <Folder />
-              </el-icon>
-              <span>文件夹</span>
-            </template>
-            <el-menu-item-group>
-              <template #title><span>部门文件夹</span></template>
-              <el-menu-item index="1-1">002</el-menu-item>
-              <el-menu-item index="1-2">003</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group title="我的文件夹">
-              <el-menu-item index="1-3">010</el-menu-item>
-            </el-menu-item-group>
-          </el-sub-menu>
-          <el-menu-item index="3">
-            <el-icon>
-              <document />
-            </el-icon>
-            <template #title>文档</template>
-          </el-menu-item>
-          <el-menu-item index="4">
-            <el-icon>
-              <setting />
-            </el-icon>
-            <template #title>设置</template>
-          </el-menu-item>
-
+        <!-- <el-menu class="el-menu-vertical" @open="handleOpen" @close="handleClose" text-color="white"> -->
+        <el-menu class="left-menu" background-color="#141718" text-color="white">
+          <Menu :menuList="userStore.menuRouters"></Menu>
         </el-menu>
-
       </el-scrollbar>
     </div>
     <!-- 顶部菜单 -->
     <div class="layout_topbar">
-      <h1> 顶部</h1>
-      <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-        <el-radio-button :label="false">ex</el-radio-button>
-        <el-radio-button :label="true">co</el-radio-button>
-      </el-radio-group>
+      <p>顶部</p>
     </div>
     <!-- 内容页面 -->
     <div class="layout_main">
-      <h1 style="height: 10000px;">内容</h1>
+      <p>内容</p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import Logo from "@/layout/logo/index.vue";
-import settings from "@/settings";
-import {
-  Document,
-  Folder,
-  Location,
-  Setting,
-} from '@element-plus/icons-vue'
+
+import useUserStore from "@/store/modules/user";
 import { ref } from "vue";
+// 菜单组件
+import Menu from "./menu/index.vue";
 
 const isCollapse = ref(false)
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath)
-}
+let userStore = useUserStore()
+
 </script>
 
 <style lang="scss" scoped>
@@ -92,38 +42,27 @@ const handleClose = (key: string, keyPath: string[]) => {
   // display: flex;
   width: 100%;
   height: 100vh;
-  background-color: #b7e64c;
+  background: #b7e64c;
 
   .layout_slider {
 
+    height: 100vh;
+    width: $home-menu-left-width;
+
     .scrollbar {
       width: 100%;
-      height: 100vh;
-    }
+      height: calc(100vh - $home-menu-top-height);
 
-    .el-menu-vertical {
-      .el-menu-item:first-child {
-        height: $home-menu-left-logoHeight;
-
-        div {
-          margin: 14px;
-          font-size: 24px;
-        }
+      .el-menu {
+        border-right: none;
       }
+    }
 
-      width: $home-menu-left-width;
+    .left-menu {
       min-height: 100vh;
-      background: $home-menu-left-color;
+      background-color: $home-menu-left-color;
 
     }
-
-    .el-menu--collapse {
-      width: 4vw;
-    }
-
-    height: 100vh;
-    // width: $home-menu-left-width;
-
   }
 
   .layout_topbar {
@@ -143,6 +82,12 @@ const handleClose = (key: string, keyPath: string[]) => {
     top: $home-menu-top-height;
     padding: 20px;
     overflow: auto; // 滚动条自适应
+
+    p {
+      height: 10000px;
+      background-color: $home-menu-left-color;
+      border: 1px solid;
+    }
   }
 
 }
