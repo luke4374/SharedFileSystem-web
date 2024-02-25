@@ -7,8 +7,8 @@
       <Logo></Logo>
       <!-- 左侧菜单列表 -->
       <el-scrollbar class="scrollbar">
-        <!-- <el-menu class="el-menu-vertical" @open="handleOpen" @close="handleClose" text-color="white"> -->
-        <el-menu class="left-menu" background-color="#141718" text-color="white">
+        <el-menu class="left-menu" background-color="#141718" text-color="white" active-text-color="#009490"
+          :default-active="$route.path">
           <Menu :menuList="userStore.menuRouters"></Menu>
         </el-menu>
       </el-scrollbar>
@@ -19,14 +19,16 @@
     </div>
     <!-- 内容页面 -->
     <div class="layout_main">
-      <p>内容</p>
+      <Main></Main>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+// 获取路由信息
+import { useRoute } from "vue-router";
 import Logo from "@/layout/logo/index.vue";
-
+import Main from "./main/index.vue";
 import useUserStore from "@/store/modules/user";
 import { ref } from "vue";
 // 菜单组件
@@ -34,6 +36,8 @@ import Menu from "./menu/index.vue";
 
 const isCollapse = ref(false)
 let userStore = useUserStore()
+
+let $route = useRoute();
 
 </script>
 
